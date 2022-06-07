@@ -1,3 +1,31 @@
+let items = ["rock", "paper", "scissors"];
+let counterMe = 0;
+let counterPc = 0;
+
+let returnItem = () => {
+  return items[Math.floor(Math.random() * items.length)];
+};
+
+let checkWin = () => {
+  if (counterMe == 5) {
+    alert("YOU WON!!!");
+  }
+  if (counterPc == 5) {
+    alert("YOU LOST PC WON");
+  }
+};
+
+let buttonEvent = (btnClass) => {
+  const pressedBtn = document.querySelector(`.${btnClass}`);
+  pressedBtn.addEventListener("click", function (e) {
+    console.log(e.target);
+  });
+};
+
+buttonEvent("rock-btn");
+buttonEvent("paper-btn");
+buttonEvent("scissors-btn");
+
 // let items = ["rock", "paper", "scissors"];
 // let counterMe = 0;
 // let counterPc = 0;
