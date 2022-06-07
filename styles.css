@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.game-div {
+    margin: 3rem 10rem;
+    border: 5px solid #96948F;
+    border-radius: 15px;
+    padding: 1rem 1rem;
+}
+
+p{
+    text-align: center;
+}
+
+.rps-option-btn {
+    width: 15rem;
+    height: 15rem;
+    border: none;
+    border-radius: 15px;
+}
+
+.rock-btn {
+    background-color: #E5CF9B;
+}
+
+.paper-btn {
+    background-color: #EDE3DA
+}
+
+.scissors.btn {
+    background-color: #ACA3CE;
+}
+
+.results-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.result-text{
+    display: flex;
+    align-items: center;
+}
+
+.buttons-div {
+    display: flex;
+    justify-content: space-around;
+}
