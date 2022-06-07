@@ -1,4 +1,5 @@
 let items = ["rock", "paper", "scissors"];
+let userItem = "";
 let counterMe = 0;
 let counterPc = 0;
 
@@ -6,19 +7,64 @@ let returnItem = () => {
   return items[Math.floor(Math.random() * items.length)];
 };
 
-let checkWin = () => {
+let checkWin = async () => {
   if (counterMe == 5) {
-    alert("YOU WON!!!");
+    await alert("YOU WON!!!");
+    counterMe = 0;
+    counterPc = 0;
   }
   if (counterPc == 5) {
-    alert("YOU LOST PC WON");
+    await alert("YO LOST PC WON");
+    counterMe = 0;
+    counterPc = 0;
   }
 };
 
-let buttonEvent = (btnClass) => {
+function gameLogic(uI, pI) {
+  if (uI == "rock" || uI == "paper" || uI == "scissors") {
+    if (uI == pI) {
+      console.log("TIE");
+    } else if (uI == "rock") {
+      if (pI == "paper") {
+        counterPc++;
+      } else if (pI == "scissors") {
+        counterMe++;
+      }
+    } else if (uI == "paper") {
+      if (pI == "scissors") {
+        counterPc++;
+      } else if (pI == "rock") {
+        counterMe++;
+      }
+    } else if (uI == "scissors") {
+      if (pI == "rock") {
+        counterPc++;
+      } else if (pI == "paper") {
+        counterMe++;
+      }
+    }
+  }
+}
+
+let myPickDiv = document.querySelector(`.user-pick`);
+let pcPickDiv = document.querySelector(`.pc-pick`);
+let resultText = document.querySelector(`.result-text`);
+
+let buttonEvent = async (btnClass) => {
   const pressedBtn = document.querySelector(`.${btnClass}`);
   pressedBtn.addEventListener("click", function (e) {
-    console.log(e.target);
+    console.log(pressedBtn.textContent);
+
+    let userItem = pressedBtn.getAttribute("alt");
+    let pcItem = returnItem();
+    myPickDiv.textContent = userItem;
+    pcPickDiv.textContent = pcItem;
+    gameLogic(userItem, pcItem);
+    resultText.textContent =
+      userItem == pcItem
+        ? "TIE"
+        : "ME  =  " + counterMe + "  ---  " + counterPc + "  =  PC";
+    checkWin();
   });
 };
 
